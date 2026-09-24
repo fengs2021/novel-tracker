@@ -80,10 +80,8 @@ jobs:
           DATE=$(date -u '+%Y-%m-%d %H:%M UTC')
           OWNER=$(echo "$GH_REPOSITORY" | cut -d/ -f1)
           REPO=$(echo "$GH_REPOSITORY" | cut -d/ -f2)
-          # digest.html 在 main 分支的 raw URL,经 htmlpreview.github.io 转一层
-          # (jsDelivr 对 .html 强制 text/plain + nosniff,浏览器看到是源码;htmlpreview 用 JS
-          # 拉取后用 iframe 渲染,等价于在浏览器里打开 HTML)
-          DIGEST_URL="https://htmlpreview.github.io/?https://raw.githubusercontent.com/${OWNER}/${REPO}/main/data/digest.html"
+          # 本机专用服务器(用户开 SG 放行 3899),推 GitHub 反而打不开
+          DIGEST_URL="http://111.229.221.200:3899/digest.html"
           RUN_URL="https://github.com/${GH_REPOSITORY}/actions/runs/${GH_RUN_ID}"
 
           if [ -s "data/analysis.json" ]; then
@@ -121,7 +119,7 @@ jobs:
                   {"tag": "button", "text": {"tag": "plain_text", "content": "📊 打开摘要 HTML"}, "type": "primary", "url": "${DIGEST_URL}"},
                   {"tag": "button", "text": {"tag": "plain_text", "content": "🔧 查看 Run"}, "type": "default", "url": "${RUN_URL}"}
                 ]},
-                {"tag": "note", "elements": [{"tag": "plain_text", "content": "digest.html (${DIGEST_SIZE} bytes) · htmlpreview.github.io 渲染 · webhook 来自 Secrets.FEISHU_WEBHOOK"}]}
+                {"tag": "note", "elements": [{"tag": "plain_text", "content": "digest.html (${DIGEST_SIZE} bytes) · 本机 111.229.221.200:3899 · webhook 来自 Secrets.FEISHU_WEBHOOK"}]}
               ]
             }
           }
