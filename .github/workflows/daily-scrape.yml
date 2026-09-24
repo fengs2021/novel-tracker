@@ -39,6 +39,7 @@ jobs:
       - name: Scrape Fanqie (番茄小说·女频最热榜)
         run: node scrapers/fanqie.js
         continue-on-error: true
+        timeout-minutes: 10
 
       # 番茄女频 · 今日流行总结（AI，LLM=小米 MiMo Token Plan；前端横幅与长佩同款）
       - name: Fanqie Trend Summary (今日流行总结)
@@ -53,6 +54,7 @@ jobs:
       - name: Scrape JJWXC (晋江文学城)
         run: node scrapers/jjwxc.js
         continue-on-error: true
+        timeout-minutes: 10
 
       # 晋江月榜 · 今日流行总结（AI，LLM=小米 MiMo Token Plan；前端横幅与长佩同款）
       - name: JJWXC Trend Summary (今日流行总结)
@@ -67,7 +69,7 @@ jobs:
       - name: Scrape Changpei (长佩文学)
         run: node scrapers/changpei.js
         continue-on-error: true
-        timeout-minutes: 45
+        timeout-minutes: 20
 
       # 长佩总榜 · 今日流行总结（AI，LLM=小米 MiMo Token Plan；2026-09-09d 起与晋江/七猫/番茄统一走 platform-summary.js，替代原 changpei-summary.js 纯规则词典）
       - name: Changpei Trend Summary (今日流行总结)
@@ -82,6 +84,7 @@ jobs:
       - name: Scrape Qimao (七猫小说·女频 8 榜去重池)
         run: node scrapers/qimao.js --girl
         continue-on-error: true
+        timeout-minutes: 10
 
       # 七猫女频 · 今日流行总结（AI，LLM=小米 MiMo Token Plan；前端横幅与长佩同款）
       - name: Qimao Trend Summary (今日流行总结)
