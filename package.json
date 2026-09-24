@@ -10,7 +10,8 @@
     "scrape:changpei": "node scrapers/changpei.js",
     "scrape:all": "node scrapers/fanqie.js && node scrapers/qidian.js && node scrapers/jjwxc.js && node scrapers/changpei.js",
     "analyze": "node scrapers/analyze.js",
-    "run:all": "node scrapers/fanqie.js && node scrapers/qidian.js && node scrapers/jjwxc.js && node scrapers/changpei.js && node scrapers/analyze.js"
+    "digest": "node scrapers/build-digest.js",
+    "run:all": "node scrapers/fanqie.js && node scrapers/qidian.js && node scrapers/jjwxc.js && node scrapers/changpei.js && node scrapers/analyze.js && node scrapers/build-digest.js"
   },
   "dependencies": {
     "playwright": "^1.61.1"
